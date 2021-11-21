@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Devices.Client.Samples
         private static string s_port = Environment.GetEnvironmentVariable("REMOTE_PORT");
 
         // Select one of the following transports used by DeviceClient to connect to IoT Hub.
-        private static readonly TransportType s_transportType = TransportType.Amqp;
-        //private static readonly TransportType s_transportType = TransportType.Mqtt;
+        //private static readonly TransportType s_transportType = TransportType.Amqp;
+        private static readonly TransportType s_transportType = TransportType.Mqtt;
         //private static readonly TransportType s_transportType = TransportType.Amqp_WebSocket_Only;
         //private static readonly TransportType s_transportType = TransportType.Mqtt_WebSocket_Only;
 
@@ -65,6 +65,7 @@ namespace Microsoft.Azure.Devices.Client.Samples
 
             int port = int.Parse(s_port, CultureInfo.InvariantCulture);
 
+            Console.WriteLine("Creating deviceClient");
             using (DeviceClient deviceClient = DeviceClient.CreateFromConnectionString(s_deviceConnectionString, s_transportType))
             {
                 if (deviceClient == null)
@@ -73,6 +74,7 @@ namespace Microsoft.Azure.Devices.Client.Samples
                     return 1;
                 }
 
+                Console.WriteLine($"Starting DeviceStreamSample on '{s_hostName}:{port}'");
                 var sample = new DeviceStreamSample(deviceClient, s_hostName, port);
                 sample.RunSampleAsync(new CancellationTokenSource()).GetAwaiter().GetResult();
             }
