@@ -4,9 +4,14 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <RestoreAdditionalProjectSources>
+      https://api.nuget.org/v3/index.json;
+      $(MSBuildThisFileDirectory)/References/
+    </RestoreAdditionalProjectSources>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.Net.WebSockets.Client" Version="*"/>
-    <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.29.1-preview-003"/>
+    <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.32.0-preview-001"/>
+    <PackageReference Include="Azure.IoT.Edge.SasTokenHelper" Version="1.0.3"/>
   </ItemGroup>
 </Project>

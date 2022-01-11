@@ -4,6 +4,7 @@ WORKDIR /app
 
 # Copy csproj and restore as distinct layers
 COPY src/*.csproj ./
+COPY src/References ./References
 RUN dotnet restore
 
 # Copy everything else and build
